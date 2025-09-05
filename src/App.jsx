@@ -19,11 +19,14 @@ function App() {
   const [player, setPlayer] = useState("");
 
   useEffect(() => {
-    fetchTransactions({
-      ...(selectedGame && selectedGame !== "all" ? { game: selectedGame } : {}),
-      ...(player ? { player } : {}),
-    });
-  }, [selectedGame, player, fetchTransactions]);
+    fetchTransactions(
+      {
+        ...(selectedGame && selectedGame !== "all" ? { game: selectedGame } : {}),
+        ...(player ? { player } : {}),
+      },
+      false
+    );
+  }, [selectedGame, player]);
 
   const refresh = () => {
     setLastHash(null);
