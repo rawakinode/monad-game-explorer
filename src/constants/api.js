@@ -1,0 +1,1 @@
+export const API_BASE = "https://monad-game-explorer-api.vercel.app";
