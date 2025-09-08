@@ -1,6 +1,6 @@
 import { ModeToggle } from "@/components/mode-toggle";
 import { Link, useLocation } from "react-router-dom";
-import { Menu } from "lucide-react";
+import { Menu, Home, Trophy, Gamepad2 } from "lucide-react";
 
 import {
   NavigationMenu,
@@ -19,15 +19,18 @@ import {
 export function Header() {
   const location = useLocation();
   const menu = [
-    { name: "Home", path: "/" },
-    { name: "Games", path: "/games" },
-    { name: "Leaderboard", path: "/leaderboard" },
+    { name: "Home", path: "/", icon: <Home className="w-4 h-4" /> },
+    { name: "Leaderboard", path: "/leaderboard", icon: <Trophy className="w-4 h-4" /> },
   ];
 
   return (
     <header className="w-full border-b border-border backdrop-blur-md bg-background">
       <div className="max-w-[1200px] mx-auto flex justify-between items-center p-4">
-        <div className="text-m font-bold">Monad Games EX</div>
+
+        <div className="flex items-center gap-2 font-bold text-lg">
+          <Gamepad2 className="w-6 h-6" />
+          Monad Playscan
+        </div>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex gap-6">
@@ -41,12 +44,12 @@ export function Header() {
                   >
                     <Link
                       to={item.path}
-                      className={`hover:opacity-80 ${
-                        location.pathname === item.path
+                      className={`flex items-center gap-2 hover:opacity-80 ${location.pathname === item.path
                           ? "text-primary font-semibold"
                           : ""
-                      }`}
+                        }`}
                     >
+                      {item.icon}
                       {item.name}
                     </Link>
                   </NavigationMenuLink>
@@ -54,6 +57,7 @@ export function Header() {
               ))}
             </NavigationMenuList>
           </NavigationMenu>
+          <ModeToggle />
         </nav>
 
         {/* Mobile Menu */}
@@ -68,21 +72,22 @@ export function Header() {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`text-lg ${
-                      location.pathname === item.path
+                    className={`flex items-center gap-3 text-lg ${location.pathname === item.path
                         ? "text-primary font-semibold"
                         : "text-muted-foreground"
-                    }`}
+                      }`}
                   >
+                    {item.icon}
                     {item.name}
                   </Link>
                 ))}
               </nav>
+              <ModeToggle />
             </SheetContent>
           </Sheet>
         </div>
 
-        <ModeToggle />
+
       </div>
     </header>
   );

@@ -26,7 +26,7 @@ export function TransactionTable({ transactions, hasMore, loading, loadMore }) {
                   <td colSpan={7} className="text-center py-3 text-gray-500">No activity</td>
                 </TableRow>
               ) : (
-                transactions.map((tx) => <TransactionRow key={tx.hash} tx={tx} />)
+                transactions.map((tx, index) => <TransactionRow key={tx.hash} tx={tx} index={index} />)
               )}
             </TableBody>
           </Table>

@@ -13,7 +13,7 @@ export function Hero({ filterRef }) {
           updates from the Monad Gaming ID ecosystem.
         </p>
         <Button onClick={() => filterRef.current?.scrollIntoView({ behavior: "smooth" })}>
-          Start Explore
+          Explore Activity
         </Button>
       </div>
     </section>
