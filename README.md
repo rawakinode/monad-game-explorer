@@ -9,12 +9,12 @@ and scores, making it easier to track on-chain gaming activity.
 
 ## ✨ Features
 
--   🔎 **Explore Transactions:** View game activity transactions on the
-    Monad network.
--   🎮 **Game Filter:** Filter transactions by specific games.
--   👤 **Player Lookup:** Check player by wallet address or username.
--   ⛓️ **Tx & Address Links:** Each hash & address links directly to
-    [Monad Explorer](https://testnet.monadexplorer.com).
+-   🔎 **Explore Transactions:** View game activity transactions on the Monad network.  
+-   🎮 **Game Filter:** Filter transactions by specific games.  
+-   👤 **Player Lookup:** Check player by wallet address or username.  
+-   ⛓️ **Tx & Address Links:** Each hash & address links directly to [Monad Explorer](https://testnet.monadexplorer.com).  
+-   🏆 **Leaderboard:** Discover top games and top players ranked by scores, gameplay count, and performance.
+
 
 ------------------------------------------------------------------------
 
