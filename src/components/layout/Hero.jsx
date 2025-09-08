@@ -5,7 +5,7 @@ export function Hero({ filterRef }) {
     <section className="w-full border-b border-border backdrop-blur-md">
       <div className="max-w-[1200px] mx-auto flex flex-col items-center justify-center p-16 text-center">
         <h1 className="text-5xl font-extrabold mb-6 drop-shadow-sm">
-          Monad Games ID Explorer
+          Monad Playscan
         </h1>
         <p className="text-lg max-w-2xl mb-6 text-muted-foreground">
           Discover, track, and analyze onchain gaming activities powered by
