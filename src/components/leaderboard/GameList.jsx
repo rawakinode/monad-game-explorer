@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { Link } from "react-router-dom"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Gamepad2 } from "lucide-react"
@@ -34,10 +35,18 @@ function GameList() {
                                     />
                                     <div className="flex-1">
                                         <div className="flex items-center gap-2">
-                                            <h2 className="text-lg font-bold text-left">{game.gameName}</h2>
+
+                                            <h2 className="text-lg font-bold text-left">
+                                                <Link
+                                                    to={`/games/${game.gameAddress}`}
+                                                    className=" hover:text-orange-300"
+                                                >
+                                                    {game.gameName}
+                                                </Link>
+                                            </h2>
                                             {game.link && (
                                                 <a
-                                                    href={game.link}
+                                                    href={game.link?.startsWith("http") ? game.link : `https://${game.link}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="text-blue-500 hover:text-blue-700"

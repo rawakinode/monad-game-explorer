@@ -34,5 +34,6 @@ export function useTransactions() {
     }
   }, [lastHash]);
 
+
   return { transactions, loading, hasMore, fetchTransactions, setLastHash };
 }
