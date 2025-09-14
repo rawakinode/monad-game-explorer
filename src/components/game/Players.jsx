@@ -17,7 +17,7 @@ function Players({ players }) {
 
                     {players.length === 0 ? (
                         <TableRow>
-                            <td colSpan={7} className="text-center py-3 text-gray-500">No activity</td>
+                            <td colSpan={7} className="text-center py-3 text-gray-500">No players</td>
                         </TableRow>
                     ) : (
                         players.map((p, index) =>

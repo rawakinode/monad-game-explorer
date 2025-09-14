@@ -13,12 +13,15 @@ import GameImage from "@/components/leaderboard/GameImage"
 import Players from "@/components/game/Players";
 import RegisterGame from "@/components/game/RegisterGame";
 import GameNotFound from "@/components/game/GameNotFound";
+import UnregisterGame from "@/components/game/UnregisterGame";
+
 import { TransactionTable } from "@/components/transactions/TransactionTable";
 import { Wallet2, Gamepad2, Clock, Trophy, Users } from "lucide-react"
 
 import { useGame } from "@/hooks/useGame";
 import { useTransactions } from "@/hooks/useTransactions";
 import { useAccount } from "wagmi"
+
 
 function MyGame() {
 
@@ -93,8 +96,9 @@ function MyGame() {
                                         <Button variant="outline" size="sm">
                                             <Gamepad2 /> Play Now
                                         </Button>
+                                        
                                     </a>
-
+                                    <UnregisterGame />
                                 </div>
                             </div>
                         </div>
