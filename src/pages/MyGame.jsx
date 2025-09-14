@@ -98,7 +98,7 @@ function MyGame() {
                                         </Button>
                                         
                                     </a>
-                                    <UnregisterGame />
+                                    {/* <UnregisterGame /> */}
                                 </div>
                             </div>
                         </div>
