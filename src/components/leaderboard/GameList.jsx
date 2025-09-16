@@ -49,7 +49,7 @@ function GameList() {
                                                 {game.gameUrl && (
                                                     <a
                                                         href={
-                                                            game.link?.startsWith("http")
+                                                            game.gameUrl?.startsWith("http")
                                                                 ? game.gameUrl
                                                                 : `https://${game.gameUrl}`
                                                         }
