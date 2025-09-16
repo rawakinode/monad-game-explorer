@@ -13,7 +13,7 @@ export function Filter({ games, setSelectedGame, refresh, loading, filterRef }) 
             <SelectItem value="all">All Games</SelectItem>
             {games.map((game) => (
               <SelectItem key={game.gameAddress} value={game.gameAddress}>
-                {game.name}
+                {game.gameName}
               </SelectItem>
             ))}
           </SelectContent>

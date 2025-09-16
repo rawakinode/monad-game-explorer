@@ -23,7 +23,7 @@ export function TransactionRow({ tx, index}) {
           {tx.hash}
         </a>
       </TableCell>
-      <TableCell>{tx.gameName}</TableCell>
+      <TableCell>{tx.gameName || tx.gameAddress}</TableCell>
       <TableCell><PlayerCell wallet={tx.playerAddress} /></TableCell>
       <TableCell>{tx.score}</TableCell>
       <TableCell>{tx.tx}</TableCell>

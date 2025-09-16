@@ -29,7 +29,7 @@ function GameList() {
                                 {/* Logo + Info */}
                                 <div className="flex items-start gap-4 flex-1">
                                     <GameImage
-                                        src={game.image}
+                                        src={game.gameImage}
                                         alt={game.gameName}
                                         className="w-12 h-12 rounded-xl shrink-0 self-center"
                                     />
@@ -44,9 +44,9 @@ function GameList() {
                                                     {game.gameName}
                                                 </Link>
                                             </h2>
-                                            {game.link && (
+                                            {game.gameUrl && (
                                                 <a
-                                                    href={game.link?.startsWith("http") ? game.link : `https://${game.link}`}
+                                                    href={game.link?.startsWith("http") ? game.gameUrl : `https://${game.gameUrl}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="text-blue-500 hover:text-blue-700"
@@ -56,7 +56,7 @@ function GameList() {
                                             )}
                                         </div>
                                         <p className="text-gray-500 text-sm text-left max-w-md line-clamp-2">
-                                            {game.description || "No description"}
+                                            {game.gameDescription || "No description"}
                                         </p>
                                     </div>
                                 </div>

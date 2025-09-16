@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
+import { API_USERNAME } from "@/constants/api"
 
 const usernameCache = {}
 
@@ -20,7 +21,7 @@ export function useUsername(wallet) {
       try {
         setLoading(true)
         const res = await axios.get(
-          `https://monad-games-id-site.vercel.app/api/check-wallet?wallet=${wallet}`
+          `${API_USERNAME}/api/check-wallet?wallet=${wallet}`
         )
         if (res.data.hasUsername) {
           usernameCache[wallet] = res.data.user.username
