@@ -7,10 +7,10 @@ export function Hero({ filterRef }) {
         <h1 className="text-5xl font-extrabold mb-6 drop-shadow-sm">
           Monad Playscan
         </h1>
-        <p className="text-lg max-w-2xl mb-6 text-muted-foreground">
+        <p className="text-md max-w-2xl mb-6 text-muted-foreground">
           Discover, track, and analyze onchain gaming activities powered by
           Monad Games ID. Explore transactions, player stats, and the latest
-          updates from the Monad Gaming ID ecosystem.
+          updates from the Monad ecosystem.
         </p>
         <Button onClick={() => filterRef.current?.scrollIntoView({ behavior: "smooth" })}>
           Explore Activity

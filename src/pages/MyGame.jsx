@@ -64,14 +64,14 @@ function MyGame() {
                         {/* Kiri: logo + deskripsi */}
                         <div className="flex items-start gap-6">
                             <GameImage
-                                src={gameDetails.image}
+                                src={gameDetails.gameImage}
                                 alt={gameDetails.gameName}
-                                className="w-20 h-20 rounded-xl object-cover shrink-0 self-center"
+                                className="w-20 h-20 rounded-xl shrink-0 self-center"
                             />
                             <div className="text-left">
                                 <h1 className="text-2xl font-bold">{gameDetails.gameName}</h1>
                                 <p className="max-w-[500px] text-gray-600 dark:text-gray-400 text-sm mt-1 line-clamp-2">
-                                    {gameDetails.description || 'No description.'}
+                                    {gameDetails.gameDescription || 'No description.'}
                                 </p>
                                 <div className="flex items-center gap-2 mt-4">
                                     <Wallet2 className="w-3 h-3" />

@@ -6,11 +6,11 @@ function Leaderboard() {
     return (
         <>
             <section className="w-full border-b border-border backdrop-blur-md">
-                <div className="max-w-[1200px] mx-auto flex flex-col items-center justify-center p-16 text-center">
-                    <h1 className="text-4xl font-extrabold mb-6 drop-shadow-sm">
+                <div className="max-w-[1200px] mx-auto flex flex-col items-center justify-center p-10 text-center">
+                    <h1 className="text-3xl font-extrabold mb-5 drop-shadow-sm">
                         Top Leaderboard
                     </h1>
-                    <p className="text-lg max-w-2xl mb-6 text-muted-foreground">
+                    <p className="text-md max-w-2xl mb-6 text-muted-foreground">
                         Discover the most played games and the highest scoring players.
                     </p>
                 </div>
