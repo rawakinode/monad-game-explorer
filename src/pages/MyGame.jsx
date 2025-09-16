@@ -89,7 +89,7 @@ function MyGame() {
                                 </div>
                                 <div className="flex items-center gap-2 mt-4">
                                     <a
-                                        href={gameDetails.link?.startsWith("http") ? gameDetails.link : `https://${gameDetails.link}`}
+                                        href={gameDetails.gameUrl?.startsWith("http") ? gameDetails.gameUrl : `https://${gameDetails.gameUrl}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
