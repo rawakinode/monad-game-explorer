@@ -23,7 +23,15 @@ export function TransactionRow({ tx, index}) {
           {tx.hash}
         </a>
       </TableCell>
-      <TableCell>{tx.gameName || tx.gameAddress}</TableCell>
+      <TableCell>
+        <a
+          href={`/games/${tx.gameAddress}`}
+          rel="noopener noreferrer"
+          className="text-foreground underline underline-offset-2 decoration-dotted hover:opacity-80"
+        >
+          {tx.gameName || tx.gameAddress}
+        </a>
+      </TableCell>
       <TableCell><PlayerCell wallet={tx.playerAddress} /></TableCell>
       <TableCell>{tx.score}</TableCell>
       <TableCell>{tx.tx}</TableCell>
