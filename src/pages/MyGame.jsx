@@ -70,7 +70,7 @@ function MyGame() {
                             />
                             <div className="text-left">
                                 <h1 className="text-2xl font-bold">{gameDetails.gameName}</h1>
-                                <p className="max-w-[500px] text-gray-600 dark:text-gray-400 text-sm mt-1 line-clamp-2">
+                                <p className="max-w-[500px] text-gray-600 dark:text-gray-400 text-sm mt-1 line-clamp-3">
                                     {gameDetails.gameDescription || 'No description.'}
                                 </p>
                                 <div className="flex items-center gap-2 mt-4">
