@@ -41,7 +41,7 @@ function PlayerList() {
                                 </div>
 
                                 {/* Statistik */}
-                                <div className="grid grid-cols-3 gap-6 text-center md:text-right text-sm w-full md:w-auto order-2 md:order-1">
+                                <div className="grid grid-cols-4 gap-6 text-center md:text-right text-sm w-full md:w-auto order-2 md:order-1">
                                     <div className="w-full lg:w-[80px]">
                                         <p className="text-gray-500">Games</p>
                                         <p className="font-semibold text-base">{player.gamesCount}</p>
@@ -51,11 +51,19 @@ function PlayerList() {
                                         <p className="font-semibold text-base">{player.totalGameplay}</p>
                                     </div>
                                     <div className="w-full lg:w-[130]">
-                                        <p className="text-gray-500">Top Score</p>
+                                        <p className="text-gray-500">High Score</p>
                                         <p className="font-semibold text-base">
                                             {String(player.topScore).length > 8
                                                 ? String(player.topScore).slice(0, 8) + "..."
                                                 : player.topScore}
+                                        </p>
+                                    </div>
+                                    <div className="w-full lg:w-[130]">
+                                        <p className="text-gray-500">Top AccumulativeScore</p>
+                                        <p className="font-semibold text-base">
+                                            {String(player.accumulativeScore).length > 8
+                                                ? String(player.accumulativeScore).slice(0, 8) + "..."
+                                                : player.accumulativeScore}
                                         </p>
                                     </div>
                                 </div>
