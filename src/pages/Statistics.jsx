@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { API_BASE } from "@/constants/api";
 
 function Statisctics() {
+    const [isLoading, setIsLoading] = useState([true])
     const [data, setData] = useState([]);
     const [filtered, setFiltered] = useState([]);
     const [range, setRange] = useState("7d");
@@ -19,8 +20,14 @@ function Statisctics() {
     useEffect(() => {
         fetch(`${API_BASE}/chart`)
             .then(res => res.json())
-            .then(setData)
-            .catch(err => console.error(err));
+            .then((res) => {
+                setData(res);
+                setIsLoading(false); // hanya stop loading kalau data sudah di-set
+            })
+            .catch(err => {
+                console.error(err);
+                setIsLoading(false); // kalau error juga stop loading
+            });
     }, []);
 
     useEffect(() => {
@@ -42,6 +49,10 @@ function Statisctics() {
             setFiltered(data);
         }
     }, [data, range]);
+
+    if (isLoading) {
+        return <p className="text-gray-500 text-center">Loading chart data...</p>;
+    }
 
     if (!filtered || filtered.length === 0) {
         return <p className="text-gray-500 text-center">No chart data available</p>;
