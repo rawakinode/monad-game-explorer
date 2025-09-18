@@ -71,56 +71,56 @@ function Statisctics() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Daily Transactions */}
                     <Card className="p-4">
-                        <h2 className="font-medium mb-2">Daily Transactions</h2>
+                        <h2 className="font-medium mb-2">Daily Activity</h2>
                         <ResponsiveContainer width="100%" height={300}>
                             <BarChart data={filtered}>
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis dataKey="date" />
                                 <YAxis />
                                 <Tooltip />
-                                <Bar dataKey="dailyTx" fill="#8884d8" name="Tx/day" />
+                                <Bar dataKey="dailyTx" fill="#8884d8" name="Activity" />
                             </BarChart>
                         </ResponsiveContainer>
                     </Card>
 
                     {/* Total Transactions */}
                     <Card className="p-4">
-                        <h3 className="font-medium mb-2">Total Transactions</h3>
+                        <h3 className="font-medium mb-2">Total Activity</h3>
                         <ResponsiveContainer width="100%" height={300}>
                             <AreaChart data={filtered}>
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis dataKey="date" />
                                 <YAxis />
                                 <Tooltip />
-                                <Area type="monotone" dataKey="cumulativeTx" fill="#8884d8" name="Total Tx" />
+                                <Area type="monotone" dataKey="cumulativeTx" fill="#8884d8" name="Total Activity" />
                             </AreaChart>
                         </ResponsiveContainer>
                     </Card>
 
                     {/* Daily Accounts */}
                     <Card className="p-4">
-                        <h3 className="font-medium mb-2">Daily Active Accounts</h3>
+                        <h3 className="font-medium mb-2">Daily Active Players</h3>
                         <ResponsiveContainer width="100%" height={300}>
                             <BarChart data={filtered}>
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis dataKey="date" />
                                 <YAxis />
                                 <Tooltip />
-                                <Bar dataKey="dailyActiveAccounts" fill="#8884d8" name="Accounts/day" />
+                                <Bar dataKey="dailyActiveAccounts" fill="#8884d8" name="Players/day" />
                             </BarChart>
                         </ResponsiveContainer>
                     </Card>
 
                     {/* Total Accounts */}
                     <Card className="p-4">
-                        <h3 className="font-medium mb-2">Total Active Accounts</h3>
+                        <h3 className="font-medium mb-2">Total Active Players</h3>
                         <ResponsiveContainer width="100%" height={300}>
                             <AreaChart data={filtered}>
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis dataKey="date" />
                                 <YAxis />
                                 <Tooltip />
-                                <Area type="monotone" dataKey="totalActiveAccounts" fill="#8884d8" name="Accounts Total" />
+                                <Area type="monotone" dataKey="totalActiveAccounts" fill="#8884d8" name="Players Total" />
                             </AreaChart>
                         </ResponsiveContainer>
                     </Card>
@@ -134,7 +134,7 @@ function Statisctics() {
                                 <XAxis dataKey="date" />
                                 <YAxis />
                                 <Tooltip />
-                                <Bar dataKey="dailyActiveGames" fill="#8884d8" name="Games/day" />
+                                <Bar dataKey="dailyActiveGames" fill="#8884d8" name="Games" />
                             </BarChart>
                         </ResponsiveContainer>
                     </Card>
@@ -148,7 +148,7 @@ function Statisctics() {
                                 <XAxis dataKey="date" />
                                 <YAxis />
                                 <Tooltip />
-                                <Area type="monotone" dataKey="totalActiveGames" fill="#8884d8" name="Games Total" />
+                                <Area type="monotone" dataKey="totalActiveGames" fill="#8884d8" name="Active Games Total" />
                             </AreaChart>
                         </ResponsiveContainer>
                     </Card>
