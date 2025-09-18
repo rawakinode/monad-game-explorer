@@ -58,7 +58,7 @@ function PlayerList() {
                                                 : player.topScore}
                                         </p>
                                     </div>
-                                    <div className="w-full lg:w-[130]">
+                                    <div className="w-full lg:w-[150]">
                                         <p className="text-gray-500">Top AccumulativeScore</p>
                                         <p className="font-semibold text-base">
                                             {String(player.accumulativeScore).length > 8

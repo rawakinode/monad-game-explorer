@@ -1,6 +1,6 @@
 import { ModeToggle } from "@/components/mode-toggle";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, Home, Trophy, Gamepad2, User, ListVideo } from "lucide-react";
+import { Menu, Home, Trophy, Gamepad2, User, ChartNoAxesCombined} from "lucide-react";
 
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
@@ -29,6 +29,7 @@ export function Header() {
   const menu = [
     { name: "Home", path: "/", icon: <Home className="w-4 h-4" /> },
     { name: "Leaderboard", path: "/leaderboard", icon: <Trophy className="w-4 h-4" /> },
+    { name: "Statistics", path: "/statistics", icon: <ChartNoAxesCombined className="w-4 h-4" /> },
   ]
 
   // tambahin My Game hanya jika wallet connect

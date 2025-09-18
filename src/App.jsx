@@ -10,6 +10,7 @@ import Games from "@/pages/Games";
 import Leaderboard from "./pages/Leaderboard";
 import MyGame from "./pages/MyGame";
 import AllGames from "./pages/AllGames";
+import Statistics from "./pages/Statistics";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/games/:address" element={<MyGame key={window.location.pathname} />} />
             <Route path="/allgames" element={<AllGames />} />
+            <Route path="/statistics" element={<Statistics />} />
           </Routes>
         </main>
 
