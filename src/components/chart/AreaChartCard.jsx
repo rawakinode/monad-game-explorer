@@ -67,7 +67,7 @@ export default function AreaChartCard({ title, description, data, dataKey, color
             <AreaChart
               accessibilityLayer
               data={filtered}
-              margin={{ left: 12, right: 12 }}
+              margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
             >
               <CartesianGrid vertical={false} />
               <XAxis
