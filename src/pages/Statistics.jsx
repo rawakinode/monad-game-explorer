@@ -1,189 +1,103 @@
-import { useEffect, useState } from "react";
-import {
-    AreaChart, Area,
-    LineChart, Line,
-    BarChart, Bar,
-    XAxis, YAxis, CartesianGrid,
-    Tooltip, Legend, ResponsiveContainer
-} from "recharts";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-
-import { API_BASE } from "@/constants/api";
+import { useEffect, useState } from "react"
+import { API_BASE } from "@/constants/api"
+import AreaChartCard from "@/components/chart/AreaChartCard"
 
 function Statisctics() {
-    const [isLoading, setIsLoading] = useState([true])
-    const [data, setData] = useState([]);
-    const [filtered, setFiltered] = useState([]);
-    const [range, setRange] = useState("7d");
+  const [isLoading, setIsLoading] = useState(true)
+  const [data, setData] = useState([])
 
-    useEffect(() => {
-        fetch(`${API_BASE}/chart`)
-            .then(res => res.json())
-            .then((res) => {
-                setData(res);
-                setIsLoading(false); // hanya stop loading kalau data sudah di-set
-            })
-            .catch(err => {
-                console.error(err);
-                setIsLoading(false); // kalau error juga stop loading
-            });
-    }, []);
+  useEffect(() => {
+    fetch(`${API_BASE}/chart`)
+      .then(res => res.json())
+      .then((res) => {
+        setData(res)
+        setIsLoading(false)
+      })
+      .catch(err => {
+        console.error(err)
+        setIsLoading(false)
+      })
+  }, [])
 
-    useEffect(() => {
-        if (!data || data.length === 0) return;
+  if (isLoading) {
+    return <p className="text-gray-500 text-center">Loading chart data...</p>
+  }
 
-        let startDate;
+  if (!data || data.length === 0) {
+    return <p className="text-gray-500 text-center">No chart data available</p>
+  }
 
-        if (range === "7d") {
-            startDate = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
-                .toISOString()
-                .slice(0, 10);
-            setFiltered(data.filter(d => d.date >= startDate));
-        } else if (range === "30d") {
-            startDate = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
-                .toISOString()
-                .slice(0, 10);
-            setFiltered(data.filter(d => d.date >= startDate));
-        } else {
-            setFiltered(data);
-        }
-    }, [data, range]);
+  return (
+    <section className="w-full border-b border-border backdrop-blur-md p-6">
+      <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
 
-    if (isLoading) {
-        return <p className="text-gray-500 text-center">Loading chart data...</p>;
-    }
+        <AreaChartCard
+          title="Daily Activity"
+          description="Transactions per day"
+          data={data}
+          dataKey="dailyTx"
+          color="var(--chart-4)"
+        />
 
-    if (!filtered || filtered.length === 0) {
-        return <p className="text-gray-500 text-center">No chart data available</p>;
-    }
+        <AreaChartCard
+          title="Total Activity"
+          description="Cumulative transactions"
+          data={data}
+          dataKey="cumulativeTx"
+          color="var(--chart-4)"
+        />
 
-    return (
-        <section className="w-full border-b border-border backdrop-blur-md p-6">
-            <div className="max-w-[1200px] mx-auto">
-                {/* Filter Range */}
-                <div className="flex gap-2 mb-6 justify-center">
-                    <Button variant={range === "7d" ? "default" : "outline"} onClick={() => setRange("7d")}>7 Days</Button>
-                    <Button variant={range === "30d" ? "default" : "outline"} onClick={() => setRange("30d")}>30 Days</Button>
-                    <Button variant={range === "all" ? "default" : "outline"} onClick={() => setRange("all")}>All Time</Button>
-                </div>
+        <AreaChartCard
+          title="Daily Active Players"
+          description="Unique players per day"
+          data={data}
+          dataKey="dailyActiveAccounts"
+          color="var(--chart-4)"
+        />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Daily Transactions */}
-                    <Card className="p-4">
-                        <h2 className="font-medium mb-2">Daily Activity</h2>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <BarChart data={filtered}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="date" />
-                                <YAxis />
-                                <Tooltip />
-                                <Bar dataKey="dailyTx" fill="#8884d8" name="Activity" />
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </Card>
+        <AreaChartCard
+          title="Total Active Players"
+          description="All-time unique players"
+          data={data}
+          dataKey="totalActiveAccounts"
+          color="var(--chart-4)"
+        />
 
-                    {/* Total Transactions */}
-                    <Card className="p-4">
-                        <h3 className="font-medium mb-2">Total Activity</h3>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <AreaChart data={filtered}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="date" />
-                                <YAxis />
-                                <Tooltip />
-                                <Area type="monotone" dataKey="cumulativeTx" fill="#8884d8" name="Total Activity" />
-                            </AreaChart>
-                        </ResponsiveContainer>
-                    </Card>
+        <AreaChartCard
+          title="Daily Active Games"
+          description="Unique games per day"
+          data={data}
+          dataKey="dailyActiveGames"
+          color="var(--chart-4)"
+        />
 
-                    {/* Daily Accounts */}
-                    <Card className="p-4">
-                        <h3 className="font-medium mb-2">Daily Active Players</h3>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <BarChart data={filtered}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="date" />
-                                <YAxis />
-                                <Tooltip />
-                                <Bar dataKey="dailyActiveAccounts" fill="#8884d8" name="Players/day" />
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </Card>
+        <AreaChartCard
+          title="Total Active Games"
+          description="All-time unique games"
+          data={data}
+          dataKey="totalActiveGames"
+          color="var(--chart-4)"
+        />
 
-                    {/* Total Accounts */}
-                    <Card className="p-4">
-                        <h3 className="font-medium mb-2">Total Active Players</h3>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <AreaChart data={filtered}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="date" />
-                                <YAxis />
-                                <Tooltip />
-                                <Area type="monotone" dataKey="totalActiveAccounts" fill="#8884d8" name="Players Total" />
-                            </AreaChart>
-                        </ResponsiveContainer>
-                    </Card>
+        <AreaChartCard
+          title="Daily Score"
+          description="Scores earned per day"
+          data={data}
+          dataKey="dailyScore"
+          color="var(--chart-4)"
+        />
 
-                    {/* Daily Games */}
-                    <Card className="p-4">
-                        <h3 className="font-medium mb-2">Daily Active Games</h3>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <BarChart data={filtered}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="date" />
-                                <YAxis />
-                                <Tooltip />
-                                <Bar dataKey="dailyActiveGames" fill="#8884d8" name="Games" />
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </Card>
+        <AreaChartCard
+          title="Total Score"
+          description="Cumulative scores"
+          data={data}
+          dataKey="totalScore"
+          color="var(--chart-4)"
+        />
 
-                    {/* Total Games */}
-                    <Card className="p-4">
-                        <h3 className="font-medium mb-2">Total Active Games</h3>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <AreaChart data={filtered}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="date" />
-                                <YAxis />
-                                <Tooltip />
-                                <Area type="monotone" dataKey="totalActiveGames" fill="#8884d8" name="Active Games Total" />
-                            </AreaChart>
-                        </ResponsiveContainer>
-                    </Card>
-
-                    {/* Daily Score */}
-                    <Card className="p-4">
-                        <h3 className="font-medium mb-2">Daily Score</h3>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <BarChart data={filtered}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="date" />
-                                <YAxis />
-                                <Tooltip />
-                                <Bar dataKey="dailyScore" fill="#8884d8" name="Score/day" />
-                            </BarChart>
-                        </ResponsiveContainer>
-                    </Card>
-
-                    {/* Total Score */}
-                    <Card className="p-4">
-                        <h3 className="font-medium mb-2">Total Score</h3>
-                        <ResponsiveContainer width="100%" height={300}>
-                            <AreaChart data={filtered}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="date" />
-                                <YAxis />
-                                <Tooltip />
-                                <Area type="monotone" dataKey="totalScore" fill="#8884d8" name="Score Total" />
-                            </AreaChart>
-                        </ResponsiveContainer>
-                    </Card>
-                </div>
-            </div>
-        </section>
-    );
+      </div>
+    </section>
+  )
 }
 
-export default Statisctics;
+export default Statisctics
